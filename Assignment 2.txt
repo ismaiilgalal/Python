@@ -1,0 +1,24 @@
+name = input("Enter file:")
+if len(name) < 1 : name = "mbox-short.txt"
+handle = open(name)
+times = list ()
+dic = dict()
+tmp2 = list()
+for line in handle:
+	if line.startswith('From ') == False: continue
+	words = line.split()
+	tmp = words[5]
+	clock = tmp[0:2]
+	#print (clock)
+	times.append(clock)
+#print (times)
+for time in times:
+	dic[time] = dic.get(time,0) +1
+#print (dic)
+for k,v in dic.items():
+	new = (k,v)
+	tmp2.append(new)
+tmp2.sort()
+#print (tmp2)
+for k,v in tmp2:
+	print(k,v)
